@@ -1,11 +1,13 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ChefHat, Eye, EyeOff, LogIn, ShieldCheck } from 'lucide-react';
+import { Eye, EyeOff, LogIn, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 
+import { BRAND } from '@/config/brand';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -71,13 +73,13 @@ export function LoginForm() {
     <div className="space-y-8">
       <div className="space-y-2 text-center lg:text-left">
         <div className="mb-2 flex items-center justify-center gap-2 lg:hidden">
-          <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <ChefHat className="size-5" />
+          <div className="flex size-10 items-center justify-center overflow-hidden rounded-lg bg-white p-1 shadow-sm">
+            <Image src={BRAND.logo} alt={BRAND.brandName} width={42} height={30} priority />
           </div>
           <span className="font-display text-lg font-semibold tracking-tight">{publicEnv.appName}</span>
         </div>
         <h1 className="font-display text-2xl font-semibold tracking-tight">Welcome back</h1>
-        <p className="text-sm text-muted-foreground">Sign in to manage today&apos;s service.</p>
+        <p className="text-sm text-muted-foreground">Sign in to World Bean POS to manage today&apos;s service.</p>
       </div>
 
       {serverError && (
@@ -180,7 +182,7 @@ export function LoginForm() {
             Demo accounts — one click, no signup
           </div>
           <p className="text-xs text-muted-foreground">
-            This is a portfolio demo. Pick a role to sign in instantly and explore its permissions.
+            Use a seeded World Bean demo role to verify outlet and permission behaviour.
           </p>
           <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
             {DEMO_ACCOUNTS.map((account) => (
