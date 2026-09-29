@@ -1,10 +1,11 @@
 'use client';
 
-import { ChefHat } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useSessionUser } from '@/components/providers/session-provider';
+import { BRAND } from '@/config/brand';
 import { publicEnv } from '@/lib/env';
 import { NAV_GROUPS } from '@/lib/nav';
 import { cn } from '@/lib/utils';
@@ -21,10 +22,13 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       <div className="flex items-center gap-2.5 border-b border-sidebar-border px-5 py-4.5">
-        <div className="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-          <ChefHat className="size-4.5" />
+        <div className="flex size-10 items-center justify-center overflow-hidden rounded-lg bg-white/95 p-1">
+          <Image src={BRAND.logo} alt={BRAND.brandName} width={42} height={30} priority />
         </div>
-        <span className="font-display text-base font-semibold tracking-tight">{publicEnv.appName}</span>
+        <div className="min-w-0">
+          <span className="block truncate font-display text-base font-semibold tracking-tight">{publicEnv.appName}</span>
+          <span className="block truncate text-[10px] tracking-wide text-sidebar-muted-foreground uppercase">{BRAND.brandName}</span>
+        </div>
       </div>
 
       <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-4 scrollbar-slim">
