@@ -1,9 +1,9 @@
 export const RESTAURANT_DEF = {
-  name: 'Copper Kettle Kitchens',
-  slug: 'copper-kettle-kitchens',
-  legalName: 'Copper Kettle Kitchens LLC',
-  defaultCurrency: 'USD',
-  timezone: 'America/New_York',
+  name: 'World Bean Coffee',
+  slug: 'world-bean-coffee',
+  legalName: 'World Bean Coffee',
+  defaultCurrency: 'INR',
+  timezone: 'Asia/Kolkata',
 };
 
 export interface BranchDef {
@@ -16,31 +16,35 @@ export interface BranchDef {
   tableCount: number;
 }
 
+/**
+ * Demo-only outlets. Replace these placeholders with the actual outlet,
+ * GSTIN/FSSAI and contact details before production go-live.
+ */
 export const BRANCH_DEFS: BranchDef[] = [
   {
-    name: 'Copper Kettle — Downtown',
+    name: 'World Bean Coffee — Demo Outlet 1',
     code: 'DTN',
-    address: { line1: '482 Market Street', city: 'Riverside', state: 'NJ', country: 'USA', postalCode: '08075' },
-    phone: '+1 (555) 201-4488',
-    email: 'downtown@copperkettle.example',
+    address: { line1: 'Demo Address 1', city: 'Bengaluru', state: 'Karnataka', country: 'India', postalCode: '560001' },
+    phone: '+91 90000 00001',
+    email: 'outlet1@worldbean.local',
     isMain: true,
     tableCount: 14,
   },
   {
-    name: 'Copper Kettle — Harbor View',
+    name: 'World Bean Coffee — Demo Outlet 2',
     code: 'HBV',
-    address: { line1: '17 Harbor Walk', city: 'Riverside', state: 'NJ', country: 'USA', postalCode: '08077' },
-    phone: '+1 (555) 201-7723',
-    email: 'harborview@copperkettle.example',
+    address: { line1: 'Demo Address 2', city: 'Bengaluru', state: 'Karnataka', country: 'India', postalCode: '560002' },
+    phone: '+91 90000 00002',
+    email: 'outlet2@worldbean.local',
     isMain: false,
     tableCount: 10,
   },
   {
-    name: 'Copper Kettle — Uptown',
+    name: 'World Bean Coffee — Demo Outlet 3',
     code: 'UPT',
-    address: { line1: '905 Grand Avenue', city: 'Fairview', state: 'NJ', country: 'USA', postalCode: '08093' },
-    phone: '+1 (555) 201-9021',
-    email: 'uptown@copperkettle.example',
+    address: { line1: 'Demo Address 3', city: 'Bengaluru', state: 'Karnataka', country: 'India', postalCode: '560003' },
+    phone: '+91 90000 00003',
+    email: 'outlet3@worldbean.local',
     isMain: false,
     tableCount: 8,
   },

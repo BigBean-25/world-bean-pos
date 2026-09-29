@@ -2,9 +2,11 @@ import { z } from 'zod';
 
 import {
   DISCOUNT_TYPE_VALUES,
+  ORDER_SOURCE_VALUES,
   ORDER_TYPE_VALUES,
   PAYMENT_METHOD_VALUES,
   type DiscountType,
+  type OrderSource,
   type OrderType,
   type PaymentMethod,
 } from '@/constants/enums';
@@ -34,6 +36,8 @@ export type CartLineInput = z.infer<typeof cartLineSchema>;
 
 export const createOrderSchema = z.object({
   type: z.enum(ORDER_TYPE_VALUES as [OrderType, ...OrderType[]]),
+  source: z.enum(ORDER_SOURCE_VALUES as [OrderSource, ...OrderSource[]]).optional(),
+  externalOrderId: z.string().min(1).max(120).nullable().optional(),
   tableId: z.string().nullable().optional(),
   customerId: z.string().nullable().optional(),
   items: z.array(cartLineSchema).min(1, 'Add at least one item to the order.'),

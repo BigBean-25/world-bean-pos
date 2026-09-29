@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ===========================================================================
-   DineFlow design tokens
+   World Bean POS design tokens
    ---------------------------------------------------------------------------
-   Brand: deep teal + navy. The sidebar is intentionally dark in BOTH themes —
+   Brand: filter-coffee brown + warm cream. The sidebar is intentionally dark in BOTH themes —
    it is the product's signature surface — so it carries its own token set that
    does not flip with the rest of the UI.
 
@@ -19,22 +19,22 @@
   --radius: 0.625rem;
 
   /* --- Surfaces & ink ---------------------------------------------------- */
-  --background: #f5f7f8;
-  --foreground: #0f1b24;
+  --background: #fbf7f2;
+  --foreground: #2a160f;
   --card: #ffffff;
-  --card-foreground: #0f1b24;
+  --card-foreground: #2a160f;
   --popover: #ffffff;
-  --popover-foreground: #0f1b24;
-  --muted: #eef1f3;
-  --muted-foreground: #5b6b76;
+  --popover-foreground: #2a160f;
+  --muted: #f3e9df;
+  --muted-foreground: #725c51;
 
   /* --- Brand ------------------------------------------------------------- */
-  --primary: #0d8480;
+  --primary: #491a0a;
   --primary-foreground: #ffffff;
-  --secondary: #e8edf0;
-  --secondary-foreground: #17323f;
-  --accent: #e6f6f4;
-  --accent-foreground: #0b5d5a;
+  --secondary: #efe1d3;
+  --secondary-foreground: #4b281b;
+  --accent: #f4e1d4;
+  --accent-foreground: #6b2b13;
 
   /* --- Status (fixed roles — never reused as a series color) ------------- */
   --destructive: #d03b3b;
@@ -49,17 +49,17 @@
   /* --- Lines ------------------------------------------------------------- */
   --border: #dce3e8;
   --input: #dce3e8;
-  --ring: #17a29b;
+  --ring: #8f4a2d;
 
   /* --- Sidebar (dark in both themes) ------------------------------------- */
-  --sidebar: #0c2430;
-  --sidebar-foreground: #cbdae1;
-  --sidebar-muted-foreground: #7e97a3;
-  --sidebar-accent: #12303e;
+  --sidebar: #2a1108;
+  --sidebar-foreground: #f1dfd4;
+  --sidebar-muted-foreground: #b7917f;
+  --sidebar-accent: #482011;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-primary: #17a29b;
-  --sidebar-primary-foreground: #04211f;
-  --sidebar-border: #1a3a49;
+  --sidebar-primary: #d2a47d;
+  --sidebar-primary-foreground: #2a1108;
+  --sidebar-border: #552818;
 
   /* --- Chart series (validated categorical order — do not reorder) ------- */
   --chart-1: #2a78d6; /* blue    */
@@ -86,21 +86,21 @@
 }
 
 .dark {
-  --background: #080f1a;
-  --foreground: #e8eef4;
-  --card: #111a2b;
-  --card-foreground: #e8eef4;
-  --popover: #111a2b;
-  --popover-foreground: #e8eef4;
-  --muted: #182437;
-  --muted-foreground: #93a4b8;
+  --background: #140b08;
+  --foreground: #f8eee8;
+  --card: #21120d;
+  --card-foreground: #f8eee8;
+  --popover: #21120d;
+  --popover-foreground: #f8eee8;
+  --muted: #321a12;
+  --muted-foreground: #bea497;
 
-  --primary: #17a29b;
-  --primary-foreground: #04211f;
-  --secondary: #182437;
-  --secondary-foreground: #dbe6ef;
-  --accent: #14303a;
-  --accent-foreground: #7fdcd5;
+  --primary: #c27c55;
+  --primary-foreground: #170a06;
+  --secondary: #342017;
+  --secondary-foreground: #f3e5dc;
+  --accent: #452217;
+  --accent-foreground: #efc3a6;
 
   --destructive: #e05c5c;
   --destructive-foreground: #1a0708;
@@ -113,17 +113,17 @@
 
   --border: #1f2c40;
   --input: #1f2c40;
-  --ring: #38bdb5;
+  --ring: #c27c55;
 
   /* Sidebar deepens slightly rather than inverting. */
-  --sidebar: #071822;
-  --sidebar-foreground: #c3d3db;
-  --sidebar-muted-foreground: #748c99;
-  --sidebar-accent: #0e2836;
+  --sidebar: #1e0c07;
+  --sidebar-foreground: #ecd8cc;
+  --sidebar-muted-foreground: #ad8976;
+  --sidebar-accent: #3b190e;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-primary: #17a29b;
-  --sidebar-primary-foreground: #04211f;
-  --sidebar-border: #143140;
+  --sidebar-primary: #d2a47d;
+  --sidebar-primary-foreground: #1e0c07;
+  --sidebar-border: #4a2115;
 
   /* Same eight hues, re-stepped for the dark surface — not an auto-flip. */
   --chart-1: #3987e5;

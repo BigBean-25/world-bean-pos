@@ -55,7 +55,7 @@ export async function login(
   }
 
   if (user.status === USER_STATUS.SUSPENDED) {
-    throw new ForbiddenError('This account has been suspended. Contact your restaurant administrator.');
+    throw new ForbiddenError('This account has been suspended. Contact your World Bean administrator.');
   }
 
   const passwordValid = await verifyPassword(password, user.passwordHash);
@@ -140,11 +140,11 @@ export async function requestPasswordReset(email: string): Promise<void> {
   const resetUrl = `/reset-password?email=${encodeURIComponent(user.email)}&token=${rawToken}`;
   await sendMail({
     to: user.email,
-    subject: 'Reset your DineFlow POS password',
+    subject: 'Reset your World Bean POS password',
     body: [
       `Hi ${user.name},`,
       '',
-      'We received a request to reset your DineFlow POS password. This link expires in 1 hour:',
+      'We received a request to reset your World Bean POS password. This link expires in 1 hour:',
       resetUrl,
       '',
       "If you didn't request this, you can safely ignore this email.",

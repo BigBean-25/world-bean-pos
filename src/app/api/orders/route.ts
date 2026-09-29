@@ -20,6 +20,8 @@ export const GET = defineRoute({ permissions: [PERMISSIONS.ORDER_VIEW] }, async 
   if (status) filter.status = status;
   const type = filterValue(query, 'type');
   if (type) filter.type = type;
+  const source = filterValue(query, 'source');
+  if (source) filter.source = source;
   if (query.search) filter.orderNumber = { $regex: query.search, $options: 'i' };
   if (query.from || query.to) {
     filter.createdAt = {};

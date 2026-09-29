@@ -25,7 +25,7 @@ const serverSchema = z.object({
   STRIPE_SECRET_KEY: z.string().optional(),
 
   MAIL_DRIVER: z.enum(['log', 'smtp']).default('log'),
-  MAIL_FROM: z.string().default('no-reply@dineflow.example'),
+  MAIL_FROM: z.string().default('no-reply@worldbeancoffee.local'),
   SMS_DRIVER: z.enum(['log']).default('log'),
 
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
@@ -52,7 +52,7 @@ export function serverEnv(): ServerEnv {
 
 /** Public values are inlined at build time and safe to read anywhere. */
 export const publicEnv = {
-  appName: process.env.NEXT_PUBLIC_APP_NAME ?? 'DineFlow POS',
+  appName: process.env.NEXT_PUBLIC_APP_NAME ?? 'World Bean POS',
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
   showDemoCredentials: process.env.NEXT_PUBLIC_SHOW_DEMO_CREDENTIALS !== 'false',
 } as const;

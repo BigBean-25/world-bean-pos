@@ -1,23 +1,16 @@
 import type { LucideIcon } from 'lucide-react';
 import {
   BarChart3,
-  Bike,
   Boxes,
   Building2,
-  CalendarDays,
   ChefHat,
-  Clock4,
-  Gift,
   History,
   LayoutDashboard,
   LayoutGrid,
-  Receipt,
   Settings,
   ShieldCheck,
   ShoppingBag,
   ShoppingCart,
-  Truck,
-  UserCog,
   Users,
   UtensilsCrossed,
   Wallet,
@@ -56,11 +49,9 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Operations',
     items: [
-      { label: 'Point of Sale', href: '/pos', icon: ShoppingCart, anyOf: [PERMISSIONS.POS_ACCESS] },
-      { label: 'Kitchen Display', href: '/kitchen', icon: ChefHat, anyOf: [PERMISSIONS.KITCHEN_VIEW] },
+      { label: 'POS', href: '/pos', icon: ShoppingCart, anyOf: [PERMISSIONS.POS_ACCESS] },
+      { label: 'Kitchen', href: '/kitchen', icon: ChefHat, anyOf: [PERMISSIONS.KITCHEN_VIEW] },
       { label: 'Tables', href: '/tables', icon: LayoutGrid, anyOf: [PERMISSIONS.TABLE_VIEW] },
-      { label: 'Reservations', href: '/reservations', icon: CalendarDays, anyOf: [PERMISSIONS.RESERVATION_VIEW] },
-      { label: 'Delivery', href: '/delivery', icon: Bike, anyOf: [PERMISSIONS.DELIVERY_VIEW] },
     ],
   },
   {
@@ -68,24 +59,19 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { label: 'Menu', href: '/menu', icon: UtensilsCrossed, anyOf: [PERMISSIONS.MENU_VIEW] },
       { label: 'Inventory', href: '/inventory', icon: Boxes, anyOf: [PERMISSIONS.INVENTORY_VIEW] },
-      { label: 'Suppliers', href: '/suppliers', icon: Truck, anyOf: [PERMISSIONS.SUPPLIER_VIEW] },
       { label: 'Purchases', href: '/purchases', icon: ShoppingBag, anyOf: [PERMISSIONS.PURCHASE_VIEW] },
     ],
   },
   {
-    label: 'People & CRM',
+    label: 'Outlet Operations',
     items: [
       { label: 'Customers', href: '/customers', icon: Users, anyOf: [PERMISSIONS.CUSTOMER_VIEW] },
-      { label: 'Loyalty', href: '/loyalty', icon: Gift, anyOf: [PERMISSIONS.LOYALTY_VIEW] },
-      { label: 'Employees', href: '/employees', icon: UserCog, anyOf: [PERMISSIONS.EMPLOYEE_VIEW] },
-      { label: 'Attendance', href: '/attendance', icon: Clock4, anyOf: [PERMISSIONS.ATTENDANCE_VIEW] },
-      { label: 'Cash Register', href: '/register', icon: Wallet, anyOf: [PERMISSIONS.REGISTER_VIEW] },
+      { label: 'Day Closing', href: '/register', icon: Wallet, anyOf: [PERMISSIONS.REGISTER_VIEW] },
     ],
   },
   {
     label: 'Finance',
     items: [
-      { label: 'Expenses', href: '/expenses', icon: Receipt, anyOf: [PERMISSIONS.EXPENSE_VIEW] },
       {
         label: 'Reports',
         href: '/reports',

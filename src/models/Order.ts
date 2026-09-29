@@ -7,6 +7,8 @@ import {
   ORDER_ITEM_STATUS_VALUES,
   ORDER_PRIORITY,
   ORDER_PRIORITY_VALUES,
+  ORDER_SOURCE,
+  ORDER_SOURCE_VALUES,
   ORDER_STATUS,
   ORDER_STATUS_VALUES,
   ORDER_TYPE_VALUES,
@@ -14,6 +16,7 @@ import {
   type DiscountType,
   type OrderItemStatus,
   type OrderPriority,
+  type OrderSource,
   type OrderStatus,
   type OrderType,
 } from '@/constants/enums';
@@ -74,6 +77,8 @@ export interface IOrder {
   branchId: Types.ObjectId;
   orderNumber: string;
   type: OrderType;
+  source: OrderSource;
+  externalOrderId: string | null;
   status: OrderStatus;
   priority: OrderPriority;
   tableId: Types.ObjectId | null;
@@ -185,6 +190,8 @@ const orderSchema = new Schema<IOrder>(
     branchId: { type: Schema.Types.ObjectId, ref: 'Branch', required: true, index: true },
     orderNumber: { type: String, required: true, unique: true },
     type: { type: String, enum: ORDER_TYPE_VALUES, required: true },
+    source: { type: String, enum: ORDER_SOURCE_VALUES, default: ORDER_SOURCE.POS, index: true },
+    externalOrderId: { type: String, default: null, trim: true },
     status: { type: String, enum: ORDER_STATUS_VALUES, default: ORDER_STATUS.DRAFT, index: true },
     priority: { type: String, enum: ORDER_PRIORITY_VALUES, default: ORDER_PRIORITY.NORMAL },
     tableId: { type: Schema.Types.ObjectId, ref: 'Table', default: null },
@@ -229,6 +236,14 @@ const orderSchema = new Schema<IOrder>(
 
 orderSchema.index({ branchId: 1, status: 1, createdAt: -1 });
 orderSchema.index({ branchId: 1, type: 1, createdAt: -1 });
+orderSchema.index({ branchId: 1, source: 1, createdAt: -1 });
+orderSchema.index(
+  { branchId: 1, source: 1, externalOrderId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { externalOrderId: { $type: 'string' } },
+  },
+);
 orderSchema.index({ branchId: 1, tableId: 1 });
 orderSchema.index({ createdAt: -1 });
 
