@@ -3,6 +3,7 @@ import { Inter, Outfit } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { ToastProvider } from '@/components/providers/toast-provider';
+import { BRAND } from '@/config/brand';
 import { publicEnv } from '@/lib/env';
 
 import './globals.css';
@@ -23,11 +24,11 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(publicEnv.appUrl),
   title: {
-    default: `${publicEnv.appName} — Restaurant Management System`,
+    default: `${publicEnv.appName} — World Bean Coffee`,
     template: `%s · ${publicEnv.appName}`,
   },
   description:
-    'DineFlow POS is a complete restaurant management and point-of-sale platform: fast counter service, a live kitchen display, table and reservation management, recipe-level inventory, and multi-branch reporting.',
+    `${BRAND.posName} is the multi-outlet billing, kitchen, inventory and operations platform for ${BRAND.brandName}.`,
   applicationName: publicEnv.appName,
   keywords: [
     'restaurant POS',
@@ -39,18 +40,18 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: 'website',
-    title: `${publicEnv.appName} — Restaurant Management System`,
+    title: `${publicEnv.appName} — ${BRAND.brandName}`,
     description:
-      'Counter-fast POS, live kitchen display, recipe-level inventory and multi-branch reporting in one system.',
-    siteName: publicEnv.appName,
+      `Fast café billing, kitchen operations, recipe inventory and multi-outlet reporting for ${BRAND.brandName}.`,
+    siteName: BRAND.posName,
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0c2430' },
-    { media: '(prefers-color-scheme: dark)', color: '#071822' },
+    { media: '(prefers-color-scheme: light)', color: '#491A0A' },
+    { media: '(prefers-color-scheme: dark)', color: '#1E0C07' },
   ],
   width: 'device-width',
   initialScale: 1,
