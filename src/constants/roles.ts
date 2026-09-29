@@ -7,6 +7,7 @@ export const ROLES = {
   CASHIER: 'cashier',
   WAITER: 'waiter',
   KITCHEN: 'kitchen',
+  INVENTORY: 'inventory',
   ACCOUNTANT: 'accountant',
 } as const;
 
@@ -143,6 +144,22 @@ export const ROLE_PERMISSIONS: Record<Role, ReadonlyArray<Permission>> = {
 
   [ROLES.KITCHEN]: [P.KITCHEN_VIEW, P.KITCHEN_UPDATE, P.ORDER_VIEW, P.MENU_VIEW, P.INVENTORY_VIEW],
 
+  [ROLES.INVENTORY]: [
+    P.INVENTORY_VIEW,
+    P.INVENTORY_MANAGE,
+    P.INVENTORY_ADJUST,
+    P.INVENTORY_COUNT,
+    P.SUPPLIER_VIEW,
+    P.SUPPLIER_MANAGE,
+    P.PURCHASE_VIEW,
+    P.PURCHASE_MANAGE,
+    P.PURCHASE_RECEIVE,
+    P.MENU_VIEW,
+    P.REPORT_VIEW_INVENTORY,
+    P.REPORT_EXPORT,
+    P.BRANCH_VIEW,
+  ],
+
   [ROLES.ACCOUNTANT]: [
     P.DASHBOARD_VIEW,
     P.DASHBOARD_VIEW_FINANCIALS,
@@ -193,22 +210,22 @@ export const ROLE_META: Record<Role, RoleMeta> = {
   },
   [ROLES.OWNER]: {
     value: ROLES.OWNER,
-    label: 'Restaurant Owner',
-    description: 'Full control of their own restaurant, its branches, staff and finances.',
+    label: 'Operations Admin',
+    description: 'Operational access across all World Bean outlets, reporting, menu and inventory.',
     landingPath: '/dashboard',
     badgeClass: 'bg-teal-100 text-teal-900 dark:bg-teal-950 dark:text-teal-200',
   },
   [ROLES.MANAGER]: {
     value: ROLES.MANAGER,
-    label: 'Manager',
-    description: 'Runs daily operations: staff, stock, menu, approvals and reporting.',
+    label: 'Outlet Manager',
+    description: 'Runs daily operations for the assigned World Bean outlet, including approvals and closing.',
     landingPath: '/dashboard',
     badgeClass: 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-200',
   },
   [ROLES.CASHIER]: {
     value: ROLES.CASHIER,
-    label: 'Cashier',
-    description: 'Takes orders and payments, and runs the cash register shift.',
+    label: 'Biller',
+    description: 'Creates bills, takes payments, sends KOTs and runs the outlet register.',
     landingPath: '/pos',
     badgeClass: 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200',
   },
@@ -221,10 +238,17 @@ export const ROLE_META: Record<Role, RoleMeta> = {
   },
   [ROLES.KITCHEN]: {
     value: ROLES.KITCHEN,
-    label: 'Kitchen Staff',
-    description: 'Works the kitchen display: accepts, prepares and completes tickets.',
+    label: 'Kitchen',
+    description: 'Works the kitchen display: accepts, prepares and completes World Bean tickets.',
     landingPath: '/kitchen',
     badgeClass: 'bg-orange-100 text-orange-900 dark:bg-orange-950 dark:text-orange-200',
+  },
+  [ROLES.INVENTORY]: {
+    value: ROLES.INVENTORY,
+    label: 'Inventory',
+    description: 'Manages stock, receiving, purchases, wastage and stock counts for assigned outlets.',
+    landingPath: '/inventory',
+    badgeClass: 'bg-lime-100 text-lime-900 dark:bg-lime-950 dark:text-lime-200',
   },
   [ROLES.ACCOUNTANT]: {
     value: ROLES.ACCOUNTANT,
