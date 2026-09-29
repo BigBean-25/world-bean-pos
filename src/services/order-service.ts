@@ -6,6 +6,7 @@ import {
   NOTIFICATION_SEVERITY,
   NOTIFICATION_TYPE,
   ORDER_ITEM_STATUS,
+  ORDER_SOURCE,
   ORDER_STATUS,
   ORDER_STATUS_TRANSITIONS,
   ORDER_TYPE,
@@ -13,6 +14,7 @@ import {
   PAYMENT_STATUS,
   REFUND_STATUS,
   TABLE_STATUS,
+  type OrderSource,
   type OrderStatus,
 } from '@/constants/enums';
 import { PERMISSIONS } from '@/constants/permissions';
@@ -146,6 +148,8 @@ async function nextOrderNumber(restaurantId: Types.ObjectId, branchCode: string)
 
 export interface CreateOrderArgs {
   type: string;
+  source?: OrderSource;
+  externalOrderId?: string | null;
   tableId?: string | null;
   customerId?: string | null;
   items: CartLineInput[];
@@ -183,6 +187,21 @@ export async function createOrder(input: CreateOrderArgs, user: SessionUser, bra
     orderDiscount: input.orderDiscount,
   });
 
+  const source =
+    input.source ??
+    (input.type === ORDER_TYPE.DINE_IN
+      ? ORDER_SOURCE.DINE_IN
+      : input.type === ORDER_TYPE.TAKEAWAY
+        ? ORDER_SOURCE.TAKEAWAY
+        : ORDER_SOURCE.POS);
+
+  if (
+    (source === ORDER_SOURCE.SWIGGY || source === ORDER_SOURCE.ZOMATO) &&
+    !input.externalOrderId
+  ) {
+    throw new ValidationError('Aggregator orders require an external order ID.');
+  }
+
   const orderNumber = await nextOrderNumber(restaurantId, branch.code);
   const now = new Date();
   const status = input.submit ? ORDER_STATUS.SUBMITTED : ORDER_STATUS.DRAFT;
@@ -196,6 +215,8 @@ export async function createOrder(input: CreateOrderArgs, user: SessionUser, bra
     branchId: branchObjectId,
     orderNumber,
     type: input.type,
+    source,
+    externalOrderId: input.externalOrderId ?? null,
     status,
     tableId: table?._id ?? null,
     customerId: input.customerId ?? null,
