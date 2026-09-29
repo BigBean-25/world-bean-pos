@@ -89,6 +89,19 @@ export const ORDER_TYPE = {
 export type OrderType = (typeof ORDER_TYPE)[keyof typeof ORDER_TYPE];
 export const ORDER_TYPE_VALUES = Object.values(ORDER_TYPE) as OrderType[];
 
+export const ORDER_SOURCE = {
+  POS: 'pos',
+  DINE_IN: 'dine_in',
+  TAKEAWAY: 'takeaway',
+  SWIGGY: 'swiggy',
+  ZOMATO: 'zomato',
+  QR: 'qr',
+  WEBSITE: 'website',
+  APP: 'app',
+} as const;
+export type OrderSource = (typeof ORDER_SOURCE)[keyof typeof ORDER_SOURCE];
+export const ORDER_SOURCE_VALUES = Object.values(ORDER_SOURCE) as OrderSource[];
+
 export const ORDER_PRIORITY = {
   NORMAL: 'normal',
   HIGH: 'high',
